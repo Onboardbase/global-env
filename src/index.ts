@@ -26,7 +26,7 @@ export class GlobalEnv<T extends Env> {
             const secrets = await this.store.getSecrets()
             this.secrets = Object.assign(getEnv, secrets)
         } catch (error) {
-            console.log(error)
+            console.error(error)
             throw new Error("Failed to initialize secret store: attempted to call get secrets on the store but failed")
         }
     }
