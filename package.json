@@ -1,0 +1,32 @@
+{
+  "name": "global-env",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "dev": "ts-node ./example/index.ts",
+    "test": "jest --passWithNoTests",
+    "build": "tsc"
+  },
+  "keywords": [
+    "env",
+    "secrets",
+    "environment",
+    "variables"
+  ],
+  "author": "Aleem Isiaka<aleemisiaka@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "std-env": "^3.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.3",
+    "jest": "^29.7.0",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  }
+}
