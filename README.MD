@@ -1,11 +1,12 @@
-
+<div align=“center”>
 # Global ENV
 
 Dynamically evaluate environment variables at runtime.
 
 This module assumes that environment variables are best stored remotely in a secure vault. And attempts to load the secrets during initialization.
+</div>
 
-### Motivation
+## Motivation
 Secrets can be statically analyzed in a node application through process.env, which exports all the key/value pairs of the current environment variables as static objects and can be inspected through the built files.
 
 To mitigate the risk of spreading secrets unintentionally, this project attempts to take secrets as dynamic values that could be pulled from a remote resource and be kept in memory for the entire runtime of the application.
