@@ -17,7 +17,7 @@
     "environment",
     "variables"
   ],
-  "author": "Aleem Isiaka<aleemisiaka@gmail.com>",
+  "author": "Onboardbase",
   "license": "ISC",
   "dependencies": {
     "std-env": "^3.4.3"
