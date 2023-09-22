@@ -4,7 +4,7 @@
 
 Dynamically evaluate environment variables at runtime.
 
-This module assumes that environment variables are best stored remotely in a secure vault. And attempts to load the secrets during initialization.
+This library assumes that environment variables are best stored remotely in a secure vault and attempts to load the secrets during initialization.
 
 </div>
 
@@ -12,7 +12,7 @@ This module assumes that environment variables are best stored remotely in a sec
 
 Secrets can be statically analyzed in a node application through process.env, which exports all the key/value pairs of the current environment variables as static objects and can be inspected through the built files.
 
-To mitigate the risk of spreading secrets unintentionally, this project attempts to take secrets as dynamic values that could be pulled from a remote resource and be kept in memory for the entire runtime of the application.
+To mitigate the risk of spreading secrets unintentionally, this library attempts to take secrets as dynamic values that could be pulled from a remote resource and be kept in memory for the entire runtime of the application.
 
 
 
@@ -55,7 +55,7 @@ memoryStore.setSecret = async (key: SECRET_KEY, value: SECRET_VALUE) => {
 })()
 ```
 
-And import this file at the top of the root file of your project.
+Import this file at the top of the root file of your project.
 ```js
 import "./setupGlobalEnv"
 ```
