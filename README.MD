@@ -11,26 +11,14 @@ Secrets can be statically analyzed in a node application through process.env, wh
 To mitigate the risk of spreading secrets unintentionally, this project attempts to take secrets as dynamic values that could be pulled from a remote resource and be kept in memory for the entire runtime of the application.
 
 
-### Example
 
-Install the dependencies
-```sh 
-yarn install
-```
+### Install
+To use global-env,
 
-Then run 
-```sh
-yarn dev
-```
-
-### Setup
-Install the package from npm or yarn
 ```bash
-yarn add global-env
-# or
-npm install global-env
-```
+yarn add @onboardbase/global-env # npm i @onboardbase/global-env
 
+### Usage
 Create a file called `setupGlobalEnv.ts` and add the below content. 
 
 ```js
