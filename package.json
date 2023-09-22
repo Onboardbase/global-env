@@ -1,11 +1,12 @@
 {
   "name": "@onboardbase/global-env",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Dynamically access Environment variables",
   "main": "dist/index.js",
   "files": [
     "dist/"
   ],
+  "repository": "https://github.com/Onboardbase/global-env",
   "scripts": {
     "dev": "ts-node ./example/index.ts",
     "test": "jest --passWithNoTests",
