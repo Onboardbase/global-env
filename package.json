@@ -1,5 +1,5 @@
 {
-  "name": "global-env",
+  "name": "@onboardbase/global-env",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -28,5 +28,8 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
