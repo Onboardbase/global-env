@@ -13,10 +13,11 @@ To mitigate the risk of spreading secrets unintentionally, this project attempts
 
 
 ### Install
-To use global-env,
+To use `global-env`,
 
 ```bash
 yarn add @onboardbase/global-env # npm i @onboardbase/global-env
+```
 
 ### Usage
 Create a file called `setupGlobalEnv.ts` and add the below content. 
