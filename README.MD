@@ -7,6 +7,7 @@ This module assumes that environment variables are best stored remotely in a sec
 </div>
 
 ## Motivation
+
 Secrets can be statically analyzed in a node application through process.env, which exports all the key/value pairs of the current environment variables as static objects and can be inspected through the built files.
 
 To mitigate the risk of spreading secrets unintentionally, this project attempts to take secrets as dynamic values that could be pulled from a remote resource and be kept in memory for the entire runtime of the application.
@@ -14,6 +15,7 @@ To mitigate the risk of spreading secrets unintentionally, this project attempts
 
 
 ### Install
+
 To use `global-env`,
 
 ```bash
@@ -21,6 +23,7 @@ yarn add @onboardbase/global-env # npm i @onboardbase/global-env
 ```
 
 ### Usage
+
 Create a file called `setupGlobalEnv.ts` and add the below content. 
 
 ```js
@@ -77,6 +80,7 @@ Loads all the key/value pairs of the env.
 
 
 ### CONTRIBUTORS
+
 Contributors are welcome. Read the guide at [`CONTRIBUTING.MD`](./CONTRIBUTING.MD).
 
 
