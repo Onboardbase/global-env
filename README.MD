@@ -16,7 +16,7 @@ To mitigate the risk of spreading secrets unintentionally, this project attempts
 
 
 
-### Install
+## Install
 
 To use `global-env`,
 
@@ -24,7 +24,7 @@ To use `global-env`,
 yarn add @onboardbase/global-env # npm i @onboardbase/global-env
 ```
 
-### Usage
+## Usage
 
 Create a file called `setupGlobalEnv.ts` and add the below content. 
 
@@ -68,7 +68,7 @@ console.log(env()) // logs all the secrets set during initialization
 console.log(env("SECRET_KEY")) // => "MOHBAD"
 ```
 
-### API
+## API
 
 #### **`exports.set(key: string, value: string): void`**
 
@@ -81,7 +81,7 @@ Get the value of an env by passing the key into the function. If no key is passe
 Loads all the key/value pairs of the env.
 
 
-### CONTRIBUTORS
+## CONTRIBUTORS
 
 Contributors are welcome. Read the guide at [`CONTRIBUTING.MD`](./CONTRIBUTING.MD).
 
