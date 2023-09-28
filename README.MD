@@ -67,6 +67,7 @@ import {env} from "global-env"
 console.log(env()) // logs all the secrets set during initialization
 console.log(env("SECRET_KEY")) // => "MOHBAD"
 ```
+Find an example here: https://github.com/Onboardbase/global-env/tree/main/example
 
 ## API
 
