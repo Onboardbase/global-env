@@ -1,3 +1,4 @@
+
 <div align=“center”>
 
 # Global ENV
@@ -20,15 +21,19 @@ To use `global-env`,
 
 ## yarn
 
+---
 ```bash
 yarn add @onboardbase/global-env
 ```
+---
 
 ## npm
 
+---
 ```bash
 npm i @onboardbase/global-env
 ```
+---
 
 ## Usage
 
@@ -36,8 +41,6 @@ npm i @onboardbase/global-env
 
 Create a file called `setupGlobalEnv.ts` and add the below content.
 
-````
----
 ---
 ```ts
 import { setupStore, memoryStore, SECRET_KEY, SECRET_VALUE, env, allEnv } from "@onboardbase/global-env"
@@ -63,49 +66,36 @@ memoryStore.setSecret = async (key: SECRET_KEY, value: SECRET_VALUE) => {
 (async function () {
     await setupStore(memoryStore)
 })()
-````
-
----
-
----
-
 ```
+---
 
 Import this file at the top of the root file of your project.
-```
 
 ---
-
-## import "./setupGlobalEnv"
-
+```go
+import "./setupGlobalEnv"
 ```
+---
 
 Finally, anywhere else:
-```
 
 ---
-
+```ts
 import {env} from "@onboardbase/global-env"
 
 console.log(env()) // logs all the secrets set during initialization
 console.log(env("SECRET_KEY")) // => "MOHBAD"
 
+```
 ---
 
-```
 Find an example here: https://github.com/Onboardbase/global-env/tree/main/example
 
 ### Using a Remote source
 If you want to fetch the environment variables from a remote source instead, you will have to setup global env like this:
-```
-
 ---
-
----
-
 ```ts
 import { setupStore, SecretStore, Env, env } from "@onboardbase/global-env";
-
 import axios from "axios";
 
 const remoteStore: SecretStore<Env> = {
@@ -120,14 +110,11 @@ const remoteStore: SecretStore<Env> = {
   await setupStore(remoteStore);
 })();
 ```
-
 ---
 
----
-
-````
 You can then access the secrets in your Express Server like this:
 
+---
 ```js
 import './setupGlobalEnv';
 import express from 'express';
@@ -142,10 +129,10 @@ app.get('/secrets', async (req, res) => {
 app.listen(3000, () => {
   console.log('Listening on port 3000!');
 });
-````
-
+```
 ---
 
+---
 ```
 ## API
 
@@ -171,5 +158,5 @@ Contributors are welcome. Read the guide at [`CONTRIBUTING.MD`](./CONTRIBUTING.M
 
 
 ```
-
 ---
+
