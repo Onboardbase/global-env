@@ -19,21 +19,27 @@ To mitigate the risk of spreading secrets unintentionally, this library attempts
 ## Install
 
 To use `global-env`,
+## yarn
 
 ```bash
-yarn add @onboardbase/global-env # npm i @onboardbase/global-env
-```
+yarn add @onboardbase/global-env ```
+ 
+## npm
+ ```bash
+ npm i @onboardbase/global-env```
 
 ## Usage
+
+### Using with in-memory varibalbe source
 
 Create a file called `setupGlobalEnv.ts` and add the below content. 
 
 ```js
-import { setupStore, memoryStore, SECRET_KEY, SECRET_VALUE, env, allEnv } from "../src"
+import { setupStore, memoryStore, SECRET_KEY, SECRET_VALUE, env, allEnv } from "@onboardbase/global-env"
 
 const MEMORY_SECRETS = {
-    RECORD_LABEL = "IMOLENIZATION",
-    SECRET_KEY = "MOHBAD"
+    RECORD_LABEL: "IMOLENIZATION",
+    SECRET_KEY: "MOHBAD"
 }
 
 memoryStore.getSecrets = async () => {
@@ -62,13 +68,47 @@ import "./setupGlobalEnv"
 
 Finally, anywhere else:
 ```js
-import {env} from "global-env"
+import {env} from "@onboardbase/global-env"
 
 console.log(env()) // logs all the secrets set during initialization
 console.log(env("SECRET_KEY")) // => "MOHBAD"
 ```
 Find an example here: https://github.com/Onboardbase/global-env/tree/main/example
 
+### Using with a Remote source
+If you want to fetch the environment variables from a remote source instead, you will have to setup global env like this:
+```js
+import {
+  setupStore,
+  memoryStore,
+  SECRET_KEY,
+  SECRET_VALUE,
+  env,
+  allEnv,
+} from '@onboardbase/global-env'; 
+
+import axios from 'axios';
+
+const fetchSecrets = async () => {
+  const response = await axios.get(
+    '<remote-url>',
+  );
+  return response.data;
+};
+
+memoryStore.getSecrets = fetchSecrets;
+memoryStore.setSecret = async (key: SECRET_KEY, value: SECRET_VALUE) => {
+  // Make an API call to update the secret
+  const secrets = allEnv();
+  secrets[key] = value;
+  console.log('Secret Updated on Remote', secrets);
+};
+
+(async function () {
+  await setupStore(memoryStore);
+})();
+
+```
 ## API
 
 #### **`exports.set(key: string, value: string): void`**
