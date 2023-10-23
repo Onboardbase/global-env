@@ -19,21 +19,27 @@ To mitigate the risk of spreading secrets unintentionally, this library attempts
 ## Install
 
 To use `global-env`,
+## yarn
 
 ```bash
-yarn add @onboardbase/global-env # npm i @onboardbase/global-env
-```
+yarn add @onboardbase/global-env ```
+ 
+## npm
+ ```bash
+ npm i @onboardbase/global-env```
 
 ## Usage
+
+### Using with in-memory varibalbe source
 
 Create a file called `setupGlobalEnv.ts` and add the below content. 
 
 ```js
-import { setupStore, memoryStore, SECRET_KEY, SECRET_VALUE, env, allEnv } from "../src"
+import { setupStore, memoryStore, SECRET_KEY, SECRET_VALUE, env, allEnv } from "@onboardbase/global-env"
 
 const MEMORY_SECRETS = {
-    RECORD_LABEL = "IMOLENIZATION",
-    SECRET_KEY = "MOHBAD"
+    RECORD_LABEL: "IMOLENIZATION",
+    SECRET_KEY: "MOHBAD"
 }
 
 memoryStore.getSecrets = async () => {
@@ -62,13 +68,57 @@ import "./setupGlobalEnv"
 
 Finally, anywhere else:
 ```js
-import {env} from "global-env"
+import {env} from "@onboardbase/global-env"
 
 console.log(env()) // logs all the secrets set during initialization
 console.log(env("SECRET_KEY")) // => "MOHBAD"
 ```
 Find an example here: https://github.com/Onboardbase/global-env/tree/main/example
 
+### Using with a Remote source
+If you want to fetch the environment variables from a remote source instead, you will have to setup global env like this:
+```js
+import {
+  setupStore,
+  SecretStore, 
+  Env,
+  env,
+} from '@onboardbase/global-env'; 
+
+import axios from 'axios';
+
+const remoteStore: SecretStore<Env> = {
+  async getSecrets() {
+    const response = await axios.get(
+    '<remote-url>',
+    );
+    return response.data;
+  },
+
+  async setSecret() {},
+};
+
+(async function () {
+  await setupStore(remoteStore);
+})();
+
+```
+You can then access the secrets say in your Express Server like this:
+```js
+import './setupGlobalEnv';
+import express from 'express';
+import { env } from '@onboardbase/global-env';
+const app = express();
+
+app.get('/secrets', async (req, res) => {
+  console.log(env()); // logs the variables here
+  res.send({success: true});
+});
+
+app.listen(3000, () => {
+  console.log('Listening on port 3000!');
+});
+```
 ## API
 
 #### **`exports.set(key: string, value: string): void`**
