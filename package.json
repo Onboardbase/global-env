@@ -1,6 +1,6 @@
 {
   "name": "@onboardbase/global-env",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Dynamically access Environment variables",
   "main": "dist/index.js",
   "files": [
