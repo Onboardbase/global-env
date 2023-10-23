@@ -1,4 +1,3 @@
-
 <div align=“center”>
 
 # Global ENV
@@ -15,30 +14,29 @@ Secrets can be statically analyzed in a node application through process.env, wh
 
 To mitigate the risk of spreading secrets unintentionally, this library attempts to take secrets as dynamic values that could be pulled from a remote resource and be kept in memory for the entire runtime of the application.
 
-
-
 ## Install
 
 To use `global-env`,
+
 ## yarn
-```
+
+```bash
 yarn add @onboardbase/global-env
- ```
-## npm
-```
-npm install @onboardbase/global-env
 ```
 
----
+## npm
+
+```bash
+npm i @onboardbase/global-env
 ```
 
 ## Usage
 
-### Using with in-memory varibalbe source
+### Using with in-memory variable source
 
-Create a file called `setupGlobalEnv.ts` and add the below content. 
+Create a file called `setupGlobalEnv.ts` and add the below content.
 
-```
+````
 ---
 ---
 ```ts
@@ -65,68 +63,70 @@ memoryStore.setSecret = async (key: SECRET_KEY, value: SECRET_VALUE) => {
 (async function () {
     await setupStore(memoryStore)
 })()
-```
----
-
+````
 
 ---
+
+---
+
 ```
 
 Import this file at the top of the root file of your project.
 ```
+
 ---
-import "./setupGlobalEnv"
----
+
+## import "./setupGlobalEnv"
+
 ```
 
 Finally, anywhere else:
 ```
+
 ---
+
 import {env} from "@onboardbase/global-env"
 
 console.log(env()) // logs all the secrets set during initialization
 console.log(env("SECRET_KEY")) // => "MOHBAD"
+
 ---
+
 ```
 Find an example here: https://github.com/Onboardbase/global-env/tree/main/example
 
-### Using with a Remote source
+### Using a Remote source
 If you want to fetch the environment variables from a remote source instead, you will have to setup global env like this:
 ```
+
 ---
 
 ---
+
 ```ts
-import {
-	setupStore,
-	SecretStore, 
-	Env,
-	env,
-  } from '@onboardbase/global-env';
-  
-  import axios from 'axios';
-  
-  const remoteStore: SecretStore<Env> = {
-	async getSecrets() {
-	  const response = await axios.get<Env>(
-	  '<remote-url>',
-	  );
-	  return response.data;
-	},
-	async setSecret() {},
-  };
-  
-  (async function () {
-	await setupStore(remoteStore);
-  })();
+import { setupStore, SecretStore, Env, env } from "@onboardbase/global-env";
+
+import axios from "axios";
+
+const remoteStore: SecretStore<Env> = {
+  async getSecrets() {
+    const response = await axios.get<Env>("<remote-url>");
+    return response.data;
+  },
+  async setSecret() {},
+};
+
+(async function () {
+  await setupStore(remoteStore);
+})();
 ```
+
 ---
 
 ---
-```
-You can then access the secrets say in your Express Server like this:
-```
----
+
+````
+You can then access the secrets in your Express Server like this:
 
 ```js
 import './setupGlobalEnv';
@@ -142,9 +142,10 @@ app.get('/secrets', async (req, res) => {
 app.listen(3000, () => {
   console.log('Listening on port 3000!');
 });
-```
+````
 
 ---
+
 ```
 ## API
 
@@ -170,4 +171,5 @@ Contributors are welcome. Read the guide at [`CONTRIBUTING.MD`](./CONTRIBUTING.M
 
 
 ```
+
 ---
