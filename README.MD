@@ -22,15 +22,18 @@ To use `global-env`,
 ## yarn
 
 ```bash
-yarn add @onboardbase/global-env ```
+yarn add @onboardbase/global-env 
+```
  
 ## npm
+
  ```bash
- npm i @onboardbase/global-env```
+ npm i @onboardbase/global-env
+```
 
 ## Usage
 
-### Using with in-memory varibalbe source
+### Using with in-memory variable source
 
 Create a file called `setupGlobalEnv.ts` and add the below content. 
 
@@ -75,7 +78,7 @@ console.log(env("SECRET_KEY")) // => "MOHBAD"
 ```
 Find an example here: https://github.com/Onboardbase/global-env/tree/main/example
 
-### Using with a Remote source
+### Using a Remote source
 If you want to fetch the environment variables from a remote source instead, you will have to setup global env like this:
 ```js
 import {
@@ -103,7 +106,8 @@ const remoteStore: SecretStore<Env> = {
 })();
 
 ```
-You can then access the secrets say in your Express Server like this:
+You can then access the secrets in your Express Server like this:
+
 ```js
 import './setupGlobalEnv';
 import express from 'express';
