@@ -80,32 +80,26 @@ If you want to fetch the environment variables from a remote source instead, you
 ```js
 import {
   setupStore,
-  memoryStore,
-  SECRET_KEY,
-  SECRET_VALUE,
+  SecretStore, 
+  Env,
   env,
-  allEnv,
 } from '@onboardbase/global-env'; 
 
 import axios from 'axios';
 
-const fetchSecrets = async () => {
-  const response = await axios.get(
+const remoteStore: SecretStore<Env> = {
+  async getSecrets() {
+    const response = await axios.get(
     '<remote-url>',
-  );
-  return response.data;
-};
+    );
+    return response.data;
+  },
 
-memoryStore.getSecrets = fetchSecrets;
-memoryStore.setSecret = async (key: SECRET_KEY, value: SECRET_VALUE) => {
-  // Make an API call to update the secret
-  const secrets = allEnv();
-  secrets[key] = value;
-  console.log('Secret Updated on Remote', secrets);
+  async setSecret() {},
 };
 
 (async function () {
-  await setupStore(memoryStore);
+  await setupStore(remoteStore);
 })();
 
 ```
