@@ -117,9 +117,8 @@ import { env } from '@onboardbase/global-env';
 const app = express();
 
 app.get('/secrets', async (req, res) => {
-  console.log(env());
+  console.log(env()); // logs the variables here
   res.send({success: true});
-  console.log('Here');
 });
 
 app.listen(3000, () => {
