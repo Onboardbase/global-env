@@ -120,7 +120,6 @@ app.listen(3000, () => {
 });
 ```
 
-```
 ## API
 
 #### **`exports.set(key: string, value: string): void`**
@@ -143,5 +142,3 @@ Contributors are welcome. Read the guide at [`CONTRIBUTING.MD`](./CONTRIBUTING.M
 
 🙌  Inspired by: [std-env](https://github.com/unjs/std-env)
 
-
-```
