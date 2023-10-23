@@ -109,6 +109,24 @@ memoryStore.setSecret = async (key: SECRET_KEY, value: SECRET_VALUE) => {
 })();
 
 ```
+You can then access the secrets say in your Express Server like this:
+```js
+import './setupGlobalEnv';
+import express from 'express';
+import { env } from '@onboardbase/global-env';
+console.log('Hello world!');
+const app = express();
+
+app.get('/secrets', async (req, res) => {
+  console.log(env());
+  res.send(env());
+  console.log('Here');
+});
+
+app.listen(3000, () => {
+  console.log('Listening on port 3000!');
+});
+```
 ## API
 
 #### **`exports.set(key: string, value: string): void`**
