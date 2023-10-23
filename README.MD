@@ -114,12 +114,11 @@ You can then access the secrets say in your Express Server like this:
 import './setupGlobalEnv';
 import express from 'express';
 import { env } from '@onboardbase/global-env';
-console.log('Hello world!');
 const app = express();
 
 app.get('/secrets', async (req, res) => {
   console.log(env());
-  res.send(env());
+  res.send({success: true});
   console.log('Here');
 });
 
