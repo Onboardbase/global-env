@@ -21,14 +21,14 @@ To mitigate the risk of spreading secrets unintentionally, this library attempts
 
 To use `global-env`,
 ## yarn
-
----
-```bash
-yarn add @onboardbase/global-env ```
- 
+```
+yarn add @onboardbase/global-env
+ ```
 ## npm
 ```
----
+npm install @onboardbase/global-env
+```
+
 ---
 ```
 
@@ -40,6 +40,8 @@ Create a file called `setupGlobalEnv.ts` and add the below content.
 
 ```
 ---
+---
+```ts
 import { setupStore, memoryStore, SECRET_KEY, SECRET_VALUE, env, allEnv } from "@onboardbase/global-env"
 
 const MEMORY_SECRETS = {
@@ -60,10 +62,13 @@ memoryStore.setSecret = async (key: SECRET_KEY, value: SECRET_VALUE) => {
     console.log("Secret Updated on Remote", secrets)
 }
 
-
 (async function () {
     await setupStore(memoryStore)
 })()
+```
+---
+
+
 ---
 ```
 
@@ -91,7 +96,7 @@ If you want to fetch the environment variables from a remote source instead, you
 ---
 
 ---
-```go
+```ts
 import {
 	setupStore,
 	SecretStore, 
@@ -122,6 +127,8 @@ import {
 You can then access the secrets say in your Express Server like this:
 ```
 ---
+
+```js
 import './setupGlobalEnv';
 import express from 'express';
 import { env } from '@onboardbase/global-env';
@@ -135,6 +142,8 @@ app.get('/secrets', async (req, res) => {
 app.listen(3000, () => {
   console.log('Listening on port 3000!');
 });
+```
+
 ---
 ```
 ## API
