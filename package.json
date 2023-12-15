@@ -3,6 +3,7 @@
   "version": "0.0.4",
   "description": "Dynamically access Environment variables",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
@@ -10,7 +11,7 @@
   "scripts": {
     "dev": "ts-node ./example/index.ts",
     "test": "jest --passWithNoTests",
-    "build": "tsc"
+    "build": "tsc --declaration"
   },
   "keywords": [
     "env",
