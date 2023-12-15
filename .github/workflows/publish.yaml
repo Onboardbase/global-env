@@ -1,8 +1,7 @@
 on:
     push:
       branches: main
-    release:
-      types: [created, published]
+
 jobs:
     publish:
       runs-on: ubuntu-latest
