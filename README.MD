@@ -133,11 +133,6 @@ Get the value of an env by passing the key into the function. If no key is passe
 Loads all the key/value pairs of the env.
 
 
-## CONTRIBUTORS
-
-Contributors are welcome. Read the guide at [`CONTRIBUTING.MD`](./CONTRIBUTING.MD).
-
-
 ### Credits
 
 🙌  Inspired by: [std-env](https://github.com/unjs/std-env)
