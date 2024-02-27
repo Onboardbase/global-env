@@ -1,4 +1,5 @@
 import { getEnv } from "./env"
+import { configEnv } from "./env.file";
 
 export interface SecretStore<P> {
   getSecrets: () => Promise<P>;
@@ -66,5 +67,7 @@ export const setupStore = async (store: SecretStore<Env>) => {
 export const env = gs.get.bind(gs)
 
 export const allEnv = env as () => Env
+
+export const dotEnv = ()=> configEnv() as Env
 
 export const setEnv = gs.set.bind(gs)
