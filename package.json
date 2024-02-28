@@ -1,6 +1,6 @@
 {
   "name": "@onboardbase/global-env",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Dynamically access Environment variables",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,8 @@
   "author": "Onboardbase",
   "license": "ISC",
   "dependencies": {
-    "std-env": "^3.4.3"
+    "std-env": "^3.4.3",
+    "watcher": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.6.3",

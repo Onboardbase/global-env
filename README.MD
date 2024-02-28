@@ -102,6 +102,28 @@ const remoteStore: SecretStore<Env> = {
 })();
 ```
 
+### Using a .env file
+
+If you want to fetch the environment variables from a .env file instead, you will have to setup global env like this:
+
+```ts
+import { dotEnv, setupStore, SecretStore, Env, env } from "@onboardbase/global-env";
+
+const remoteStore: SecretStore<Env> = {
+  async getSecrets() {
+    return dotEnv()
+  },
+  async setSecret() {
+    
+  },
+};
+
+(async function () {
+  await setupStore(remoteStore);
+})();
+```
+
+
 You can then access the secrets in your Express Server like this:
 
 ```js
